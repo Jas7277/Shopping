@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+import java.awt.GridLayout;
 import java.util.ArrayList;
 
 public class Site {
@@ -12,13 +14,15 @@ public class Site {
 		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
+		frame.setLayout(new GridLayout(1, 1));
 		
-		Food[] food = new Food[2];
-		food[0] = new Milk(0, 1, 1);
-		food[1] = new Eggs(0, 1, 2);
+		Item[] item = new Item[3];
+		item[0] = new Chilled("Milk", 0, 1, 1);
+		item[1] = new Chilled("Eggs", 0, 1, 2);
+		item[2] = new Chilled("Creamer", 0, 1, 3);
 		
-		for (int i = 0; i < food.length; i++) {
-			button = new JButton(food[i].name);
+		for (int i = 0; i < item.length; i++) {
+			button = new JButton(item[i].name);
 			button.setSize(100, 100);
 			buttons.add(button);
 			frame.add(button);
@@ -27,35 +31,18 @@ public class Site {
 
 }
 
-class Food {
+class Item {
 	String name;
 }
 
-class Milk extends Food {
+class Chilled extends Item {
 	
 	// Location variables
 	int aisle;
 	int bin;
 	int pos;
 	
-	String name = "Milk";
-	
-	Milk(int aisle, int bin, int pos) {
-		super.name = name;
-		this.aisle = aisle;
-		this.bin = bin;
-		this.pos = pos;
-	}
-}
-
-class Eggs extends Food {
-	int aisle;
-	int bin;
-	int pos;
-	
-	String name = "Eggs";
-	
-	Eggs(int aisle, int bin, int pos) {
+	Chilled(String name, int aisle, int bin, int pos) {
 		super.name = name;
 		this.aisle = aisle;
 		this.bin = bin;
