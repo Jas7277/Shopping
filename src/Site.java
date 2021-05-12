@@ -44,8 +44,15 @@ public class Site {
 			button.addActionListener(new ActionListener() {
 
 				@Override
-				public void actionPerformed(ActionEvent e) {
-					for (Item item: items) {
+				public void actionPerformed(ActionEvent e) {					
+					for (Item item: items) {				
+						if (button.getText().equals("Done")) {
+							System.out.println("Done clicked");
+							if (shoppingList.size() == 0) {
+								System.out.println("You need to add some items first!");
+							}
+						}
+						
 						if (item.name == button.getText()) {
 							shoppingList.add(item);
 						}
